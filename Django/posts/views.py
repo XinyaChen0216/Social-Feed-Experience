@@ -47,10 +47,10 @@ class PostListCreateAPIView(APIView):
                 status=status.HTTP_400_BAD_REQUEST,
             )
 
-        # Create the Post first
+        # Create the Post model first
         post = Post.objects.create(text=text)
 
-        # Validate + create Media rows
+        # Validate + create Media model
         for f in files:
             ext = os.path.splitext(f.name)[1].lower()
             media_type = _detect_media_type(ext)

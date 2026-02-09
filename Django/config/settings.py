@@ -59,6 +59,7 @@ MIDDLEWARE = ["corsheaders.middleware.CorsMiddleware", *MIDDLEWARE]
 # CORS settings
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",
+    "https://social-feed-experience.vercel.app",
 ]
 
 
@@ -131,14 +132,10 @@ STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 STORAGES = {
     "default": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
 }
-
-CORS_ALLOWED_ORIGINS = [
-    "https://social-feed-experience.vercel.app"
-]
 

@@ -53,10 +53,10 @@ async function submitPost() {
   isSubmitting.value = true;
   try {
     const formData = new FormData();
-    formData.append("text", text.value);
+    formData.append("text", text.value); //match Django: (request.data.get("text") or "").strip()
 
     for (const f of files.value) {
-      formData.append("files", f); // must match Django: request.FILES.getlist("files")
+      formData.append("files", f); // match Django: request.FILES.getlist("files")
     }
 
     await api.post("/posts/", formData, {

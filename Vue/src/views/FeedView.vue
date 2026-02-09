@@ -55,7 +55,7 @@ onMounted(loadPosts);
           <template v-for="m in post.media" :key="m.id">
             <div v-if="m.media_type === 'image'">
               <img
-                :src="m.url"
+                :src="m.url.startsWith('http') ? m.url : `${import.meta.env.VITE_API_BASE_URL}${m.url}`"
                 alt="uploaded"
                 loading="lazy"
                 style="width:100%; border-radius:8px; object-fit:cover;"
