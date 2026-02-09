@@ -72,16 +72,16 @@ onMounted(loadPosts);
 
             <div v-else-if="m.media_type === 'video'">
               <video controls preload="metadata" style="width:100%; border-radius:8px;">
-                <source :src="m.url" />
+                <source :src="mediaUrl(m.url)" />
               </video>
             </div>
 
             <!-- fallback if your API didn't set media_type -->
             <div v-else>
               <video v-if="isVideo(m.url)" controls preload="metadata" style="width:100%; border-radius:8px;">
-                <source :src="m.url" />
+                <source :src="mediaUrl(m.url)" />
               </video>
-              <img v-else :src="m.url" alt="uploaded" loading="lazy" style="width:100%; border-radius:8px;" />
+              <img v-else :src="mediaUrl(m.url)" alt="uploaded" loading="lazy" style="width:100%; border-radius:8px;" />
             </div>
           </template>
         </div>
