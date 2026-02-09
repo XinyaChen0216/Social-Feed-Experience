@@ -21,7 +21,7 @@ class Media(models.Model):
         related_name='media', #allows reverse access
         on_delete=models.CASCADE # if a post is deleted, all its media are automatically deleted
     )
-    file = models.FileField(upload_to='media/')
+    file = models.FileField(upload_to='uploads/')
     media_type = models.CharField(max_length=10, choices=MEDIA_TYPE_CHOICES)
 
     def __str__(self):

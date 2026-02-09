@@ -26,6 +26,14 @@ SECRET_KEY = os.environ.get("SECRET_KEY", "dev-secret-key")
 DEBUG = os.environ.get("DEBUG", "True") == "True"
 ALLOWED_HOSTS = ["*"]
 
+CLOUDINARY_STORAGE = {
+    "CLOUD_NAME": os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    "API_KEY": os.environ.get("CLOUDINARY_API_KEY"),
+    "API_SECRET": os.environ.get("CLOUDINARY_API_SECRET"),
+}
+
+DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+
 
 # Application definition
 
@@ -38,8 +46,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'posts',
-    'corsheaders' 
+    'corsheaders',
+    'cloudinary',
+    'cloudinary_storage',
 ]
+
 # cortsheaders: allows Vue to communicate with Django backend when they are running on different origins
 
 MIDDLEWARE = [
