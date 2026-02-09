@@ -24,6 +24,14 @@ async function loadPosts() {
   }
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL;
+
+const mediaUrl = (url) => {
+  if (!url) return "";
+  if (url.startsWith("http")) return url; 
+  return `${API_BASE}${url}`;
+};
+
 onMounted(loadPosts);
 </script>
 
@@ -55,7 +63,7 @@ onMounted(loadPosts);
           <template v-for="m in post.media" :key="m.id">
             <div v-if="m.media_type === 'image'">
               <img
-                :src="m.url.startsWith('http') ? m.url : `${import.meta.env.VITE_API_BASE_URL}${m.url}`"
+                :src="mediaUrl(m.url)"
                 alt="uploaded"
                 loading="lazy"
                 style="width:100%; border-radius:8px; object-fit:cover;"
